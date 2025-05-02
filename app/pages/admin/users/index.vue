@@ -16,9 +16,7 @@
     </Button>
 
     <!-- Filters -->
-     <h4 class="my-2 font-semibold text-muted-color-emphasis">
-      Filtros
-    </h4>
+    <h4 class="my-2 font-semibold text-muted-color-emphasis">Filtros</h4>
     <div class="grid gap-4 grid-cols-2 lg:grid-cols-3 mb-4">
       <InputGroup>
         <InputGroupAddon>
@@ -165,10 +163,20 @@
     </div>
 
     <DataTable
-      :value="data"
+      :value="data.data"
       pt:tableContainer:class="shadow-md !rounded-lg"
-      class=""
+      :rows="limit"
+      :first="currentPage"
+      :total-records="data?.total"
+      :rows-per-page-options="[5, 10, 25, 50]"
       :loading="status === 'pending'"
+      paginator
+      lazy
+      @page="
+        ($event) =>
+          $router.push({ query: { ...$route.query, page: $event.page + 1 } })
+      "
+      @update:rows="limit = $event"
     >
       <Column field="email" header="Correo">
         <template #body="{ data }">
@@ -183,10 +191,7 @@
 
       <Column field="role" header="Rol">
         <template #body="{ data }">
-          <Tag
-            :value="data.role.name"
-            pt:label:class="text-xs font-normal"
-            />
+          <Tag :value="data.role.name" pt:label:class="text-xs font-normal" />
         </template>
       </Column>
 
@@ -243,10 +248,16 @@
   const toast = useToastService();
   const route = useRoute();
 
+  // Data fetching
+  const limit = ref(5);
+  const currentPage = computed(() => {
+    return limit.value * (route.query.page ? Number(route.query.page) - 1 : 0);
+  });
   const { data, refresh, status } = await useAsyncData(
     () =>
       getAllUsers({
         ...route.query,
+        per_page: limit.value,
       }),
     {
       watch: [() => route.query],

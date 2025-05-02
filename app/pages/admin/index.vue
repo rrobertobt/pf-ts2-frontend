@@ -1,6 +1,8 @@
 <template>
   <div>
-    Admin user
+    <h4 class="text-xl my-2 font-semibold text-muted-color-emphasis">
+      Inicio Administrador
+    </h4>
   </div>
 </template>
 <script setup>
