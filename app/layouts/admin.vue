@@ -97,6 +97,11 @@
           icon: "lucide:users",
           to: "/admin/users",
         },
+        {
+          label: "Nichos",
+          icon: "tabler:grave",
+          to: "/admin/niches",
+        },
       ],
     },
   ];

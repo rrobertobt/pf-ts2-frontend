@@ -1,5 +1,5 @@
 <template>
-  <Menu :model="items" pt:root:class="border-none!">
+  <Menu :model="items" pt:root:class=" p-2 not-dark:border-none!">
     <template #item="{ item, props }">
       <NuxtLink
         active-class="!bg-primary/30"

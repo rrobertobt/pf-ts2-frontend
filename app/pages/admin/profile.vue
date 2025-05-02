@@ -1,23 +1,23 @@
 <template>
   <div class="">
-    <h4 class="text-xl my-2 font-semibold text-gray-700">Perfil de usuario</h4>
+    <h4 class="text-xl my-2 font-semibold ">Perfil de usuario</h4>
     <div class="space-y-3">
-      <p class="text-lg text-gray-600">
-        <span class="font-medium">Nombre:</span> {{ session?.first_name }}
+      <p class="text-lg ">
+        <span class="font-medium text-muted-color">Nombre:</span> {{ session?.first_name }}
         {{ session?.last_name }}
       </p>
-      <p class="text-lg text-gray-600">
-        <span class="font-medium">Email:</span> {{ session?.email }}
+      <p class="text-lg ">
+        <span class="font-medium text-muted-color">Email:</span> {{ session?.email }}
       </p>
-      <div class="text-lg text-gray-600">
-        <span class="font-medium">Rol:</span>
+      <div class="text-lg ">
+        <span class="font-medium text-muted-color">Rol:</span>
         <div class="my-3">
           <p class="">
             <span class="font-semibold">{{ session.role.name }}</span> ({{
               session.role.slug
             }})
           </p>
-          <p class="ml-4 text-sm text-gray-500">
+          <p class="ml-4 text-sm ">
             {{ session.role.description }}
           </p>
         </div>
