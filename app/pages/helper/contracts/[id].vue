@@ -182,15 +182,6 @@
       </div>
 
       <h4 class="text-xl my-2 font-semibold text-muted-color-emphasis">
-        Acciones
-      </h4>
-      <div class="flex gap-4">
-        <Button label="Aprobar" icon="pi pi-check" severity="success" :disabled="data.state?.slug !== 'pendiente'"
-          @click="handleApprove" />
-        <Button label="Rechazar" icon="pi pi-times" severity="danger" :disabled="data.state?.slug !== 'pendiente'"
-          @click="handleReject" />
-      </div>
-      <h4 class="text-xl my-2 font-semibold text-muted-color-emphasis">
         Pagos
       </h4>
 
@@ -253,7 +244,7 @@
               <p class="font-semibold text-muted-color">Pagada:</p>
               <p>{{ payment.paid ? "Sí" : "No" }}</p>
               <Button variant="text" size="small" severity="warn" icon="pi pi-eye" label="Ver detalles" :as="NuxtLink"
-                :to="`/admin/payments/${payment.id}`" />
+                :to="`/helper/payments/${payment.id}`" />
             </template>
           </Card>
         </div>
@@ -329,7 +320,7 @@ const handleReject = async () => {
 
 
 definePageMeta({
-  layout: "admin",
+  layout: "helper",
 });
 </script>
 <style scoped></style>

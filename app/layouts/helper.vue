@@ -22,7 +22,7 @@
       <SidebarMenu :items="sidebarItems" />
     </Drawer>
     <header
-      class="flex py-4 px-4 lg:px-12 lg:max-w-screen-2xl mx-auto w-full justify-between sticky top-0 z-10 mb-5 border-b border-neutral-700 bg-zinc-950 shadow-md"
+      class="flex py-4 px-4 print:hidden lg:px-12 lg:max-w-screen-2xl mx-auto w-full justify-between sticky top-0 z-10 mb-5 border-b border-neutral-700 bg-white dark:bg-zinc-950 dark:shadow-md"
     >
       <Button
         v-tooltip.left="{
@@ -83,8 +83,8 @@
     {
       label: "Navegación",
       items: [
-        { label: "Inicio", icon: "lucide:house", to: "/admin" },
-        { label: "Perfil", icon: "lucide:user", to: "/admin/profile" },
+        { label: "Inicio", icon: "lucide:house", to: "/helper" },
+        { label: "Perfil", icon: "lucide:user", to: "/helper/profile" },
         
       ],
     },
@@ -92,24 +92,29 @@
       label: "Administración",
       items: [
         {
-          label: "Usuarios",
+          label: "Usuarios responsables",
           icon: "lucide:users",
-          to: "/admin/users",
+          to: "/helper/users",
         },
         {
           label: "Nichos",
           icon: "tabler:grave",
-          to: "/admin/niches",
+          to: "/helper/niches",
         },
         {
           label: "Ocupantes",
           icon: "lucide:user-x",
-          to: "/admin/occupants",
+          to: "/helper/occupants",
         },
         {
           label: "Contratos y pagos",
           icon: "lucide:user-x",
-          to: "/admin/contracts-payments",
+          to: "/helper/contracts-payments",
+        },
+        {
+          label: "Reportes",
+          icon: "lucide:file-text",
+          to: "/helper/reports",
         },
       ],
     },

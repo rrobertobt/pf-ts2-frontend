@@ -86,24 +86,6 @@
       </template>
     </Card>
 
-    <div v-if="!data?.paid">
-      <label class="flex items-center p-2 mt-4 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 ">
-        <span class="mr-2 text-sm text-gray-700">Seleccionar archivo:</span>
-        <span class="text-sm text-gray-500">
-          {{ selectedFile ? selectedFile.name : "Ninguno" }}
-        </span>
-        <input type="file" class="hidden" accept="image/*,application/pdf" @change="
-          (e) => {
-            const file = e.target.files[0];
-            if (file) {
-              selectedFile = file;
-            }
-          }" />
-      </label>
-
-      <Button class="mt-4" :disabled="!selectedFile" :loading="asyncStatus === 'loading'" icon="pi pi-check"
-        @click="mutate" label="Registrar pago" />
-    </div>
   </div>
 </template>
 <script setup>
@@ -122,43 +104,11 @@ const dateFormatter = new Intl.DateTimeFormat("es-GT", {
   day: "numeric",
 });
 
-const selectedFile = ref(null);
-const uploadFile = async () => {
-  const formData = new FormData();
-  formData.append("file", selectedFile.value);
-
-  const res = await $api(`/payments/${route.params.id}/upload`, {
-    method: "POST",
-    body: formData,
-  });
-  return res;
-}
-
 const handlePrint = () => {
   window.print();
 }
-
-const { mutate, asyncStatus } = useMutation({
-  mutation: () => uploadFile(),
-  onSuccess: () => {
-    toast.add({
-      severity: "success",
-      summary: "Éxito",
-      detail: "El pago se ha registrado correctamente.",
-    });
-    refresh();
-  },
-  onError: () => {
-    toast.add({
-      severity: "error",
-      summary: "Error",
-      detail: "No se pudo registrar el pago.",
-    });
-  },
-})
-
 definePageMeta({
-  layout: "admin",
+  layout: "auditor",
 });
 </script>
 <style scoped></style>

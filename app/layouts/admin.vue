@@ -22,7 +22,7 @@
       <SidebarMenu :items="sidebarItems" />
     </Drawer>
     <header
-      class="flex py-4 px-4 lg:px-12 lg:max-w-screen-2xl mx-auto w-full justify-between sticky top-0 z-10 mb-5 border-b border-neutral-700 bg-zinc-950 shadow-md"
+      class="flex py-4 px-4 print:hidden lg:px-12 lg:max-w-screen-2xl mx-auto w-full justify-between sticky top-0 z-10 mb-5 border-b border-neutral-700 bg-white dark:bg-zinc-950 dark:shadow-md"
     >
       <Button
         v-tooltip.left="{
@@ -62,8 +62,8 @@
         />
       </div>
     </header>
-    <div class="flex gap-x-7 lg:px-16 px-4 lg:max-w-screen-2xl mx-auto">
-      <div class="w-64 shrink-0 hidden lg:block">
+    <div class="flex gap-x-7 lg:px-16 px-4 lg:max-w-screen-2xl mx-auto ">
+      <div class="w-64 shrink-0 hidden lg:block print:hidden">
         <SidebarMenu :items="sidebarItems" />
       </div>
       <NuxtPage />
@@ -110,6 +110,11 @@
           label: "Contratos y pagos",
           icon: "lucide:user-x",
           to: "/admin/contracts-payments",
+        },
+        {
+          label: "Reportes",
+          icon: "lucide:file-text",
+          to: "/admin/reports",
         },
       ],
     },

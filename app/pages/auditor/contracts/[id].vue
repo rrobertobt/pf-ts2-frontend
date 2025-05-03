@@ -181,22 +181,6 @@
         </div>
       </div>
 
-      <h4 class="text-xl my-2 font-semibold text-muted-color-emphasis">
-        Acciones
-      </h4>
-      <div class="flex gap-4">
-        <Button label="Aprobar" icon="pi pi-check" severity="success" :disabled="data.state?.slug !== 'pendiente'"
-          @click="handleApprove" />
-        <Button label="Rechazar" icon="pi pi-times" severity="danger" :disabled="data.state?.slug !== 'pendiente'"
-          @click="handleReject" />
-      </div>
-      <h4 class="text-xl my-2 font-semibold text-muted-color-emphasis">
-        Pagos
-      </h4>
-
-      <Button label="Crear boleta de pago" icon="pi pi-plus" @click="handleCreatePayment"
-        :loading="paymentLoading === 'pending'" />
-
       <h4 class="my-2 font-semibold text-muted-color">
         Boleta activa
       </h4>
@@ -233,7 +217,7 @@
 
             </div>
             <Button variant="text" size="small" severity="info" icon="pi pi-check" label="Registrar pago" :as="NuxtLink"
-              :to="`/admin/payments/${data?.current_payment?.id}`" />
+              :to="`/auditor/payments/${data?.current_payment?.id}`" />
           </template>
         </Card>
       </div>
@@ -253,7 +237,7 @@
               <p class="font-semibold text-muted-color">Pagada:</p>
               <p>{{ payment.paid ? "Sí" : "No" }}</p>
               <Button variant="text" size="small" severity="warn" icon="pi pi-eye" label="Ver detalles" :as="NuxtLink"
-                :to="`/admin/payments/${payment.id}`" />
+                :to="`/auditor/payments/${payment.id}`" />
             </template>
           </Card>
         </div>
@@ -271,10 +255,9 @@
 </template>
 <script setup>
 import { NuxtLink } from "#components";
-import { createPayment, getContractById, updateContract } from "~/lib/api/contracts";
+import { getContractById } from "~/lib/api/contracts";
 
 const route = useRoute();
-const toast = useToastService();
 const { data, status, refresh } = await useAsyncData(() =>
   getContractById(route.params.id),
 );
@@ -287,49 +270,9 @@ const dateFormatter = new Intl.DateTimeFormat("es-GT", {
 
 
 
-const { mutate: handleCreatePayment, asyncStatus: paymentLoading } = useMutation({
-  mutation: () => createPayment(route.params.id),
-  onSuccess: () => {
-    toast.add({
-      severity: "success",
-      summary: "Éxito",
-      detail: "Pago creado correctamente",
-    });
-    refresh();
-  },
-  onError: (error) => {
-    toast.add({
-      severity: "error",
-      summary: "Error al crear el pago",
-      detail: error.data?.message || "Error al crear el pago",
-    });
-  },
-})
-// const handleCreatePayment = async () => {
-//   await createPayment(route.params.id);
-//   await refresh();
-// }
-
-
-const handleApprove = async () => {
-  await updateContract(route.params.id, {
-    action: "approve"
-  });
-  await refresh();
-}
-
-const handleReject = async () => {
-  await updateContract(route.params.id, {
-    action: "reject"
-  });
-  await refresh();
-}
-
-
-
 
 definePageMeta({
-  layout: "admin",
+  layout: "auditor",
 });
 </script>
 <style scoped></style>

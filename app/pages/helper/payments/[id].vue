@@ -158,7 +158,7 @@ const { mutate, asyncStatus } = useMutation({
 })
 
 definePageMeta({
-  layout: "admin",
+  layout: "helper",
 });
 </script>
 <style scoped></style>

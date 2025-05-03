@@ -22,7 +22,7 @@
       <SidebarMenu :items="sidebarItems" />
     </Drawer>
     <header
-      class="flex py-4 px-4 lg:px-12 lg:max-w-screen-2xl mx-auto w-full justify-between sticky top-0 z-10 mb-5 border-b border-neutral-700 bg-zinc-950 shadow-md"
+      class="flex py-4 px-4 print:hidden lg:px-12 lg:max-w-screen-2xl mx-auto w-full justify-between sticky top-0 z-10 mb-5 border-b border-neutral-700 bg-white dark:bg-zinc-950 dark:shadow-md"
     >
       <Button
         v-tooltip.left="{

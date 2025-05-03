@@ -28,6 +28,6 @@ useHead({
 @import '~/assets/css/main.css';
 
 body, html {
-  @apply bg-gray-100 dark:bg-zinc-950;
+  @apply bg-white dark:bg-zinc-950;
 }
 </style>
