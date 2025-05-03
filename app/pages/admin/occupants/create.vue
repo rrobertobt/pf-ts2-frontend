@@ -274,11 +274,29 @@
         </IftaLabel>
       </fieldset>
 
+      <fieldset :disabled="asyncStatus === 'loading'">
+        <h5
+          class="my-2 font-semibold text-muted-color-emphasis flex items-center"
+        >
+          Asociación del responsable
+        </h5>
+
+        <h6 class="my-2 text-muted-color-emphasis flex items-center">
+          Buscar y seleccionar usuario responsable (por DPI)
+        </h6>
+
+        <UserSelector @select="(user) => (associatedUser = user)" />
+      </fieldset>
+
+      <Message severity="info" class="mt-4">
+        Se creará automáticamente un contrato inicial para este ocupante.
+        Generar bóleta de pago en sección de contratos y pagos.
+      </Message>
+{{ associatedUser }}
       <Button class="mt-4" type="submit" :loading="asyncStatus === 'loading'">
         <Icon name="lucide:save" />
         Guardar usuario
       </Button>
-
     </Form>
   </div>
 </template>
@@ -286,13 +304,16 @@
   import { NuxtLink } from "#components";
   import { zodResolver } from "@primevue/forms/resolvers/zod";
   import { z } from "zod";
+  import UserSelector from "~/components/UserSelector.vue";
   import { getAllGenders } from "~/lib/api/genders";
-  import { createNiche, getAllNiches } from "~/lib/api/niches";
+  import { getAllNiches } from "~/lib/api/niches";
   import { createOccupant } from "~/lib/api/occupants";
   const toast = useToastService();
 
   const nicheSearch = ref("");
   const selectedNiche = ref(null);
+  const associatedUser = ref(null);
+
   const { data: availableNiches, loading: availableNichesLoading } =
     await useAsyncData(
       () =>
@@ -408,13 +429,19 @@
 
   const onFormSubmit = (event) => {
     if (event.valid) {
-      console.log({
-        ...event.values,
-        current_niche_id: selectedNiche.value?.id,
-      })
+      if (!selectedNiche.value || !associatedUser.value) {
+        toast.add({
+          severity: "error",
+          summary: "Error al crear el ocupante",
+          detail: "El nicho y el usuario responsable son requeridos",
+        });
+        return;
+      }
+
       mutate({
         ...event.values,
         current_niche_id: selectedNiche.value?.id,
+        representative_user_id: associatedUser.value?.id,
       });
     }
   };
