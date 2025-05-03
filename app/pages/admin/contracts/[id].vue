@@ -10,118 +10,118 @@
       </template>
     </Button>
 
-    <template v-if="data">
+    <div v-if="data">
       <div class="grid grid-cols-3 gap-4">
-        <p class="text-lg">
+        <div class="text-lg">
           <span class="font-medium flex items-center text-muted-color">
             <Icon name="tabler:grave" class="mr-2 inline-block" />
             Información de nicho:
           </span>
-        <div class="my-3">
-          <p class="">
-            <span class="font-semibold text-muted-color">Código único:</span>
-            <span class="ml-2 text-xl">{{ data?.niche?.code }}</span>
-          </p>
-          <p class="">
-            <span class="font-semibold text-muted-color">Calle y avenida:</span>
-            <span class="ml-2 text-xl">
-              {{ data?.niche?.street_location }} y
-              {{ data?.niche?.avenue_location }}
-            </span>
-          </p>
+          <div class="my-3">
+            <p class="">
+              <span class="font-semibold text-muted-color">Código único:</span>
+              <span class="ml-2 text-xl">{{ data?.niche?.code }}</span>
+            </p>
+            <p class="">
+              <span class="font-semibold text-muted-color">Calle y avenida:</span>
+              <span class="ml-2 text-xl">
+                {{ data?.niche?.street_location }} y
+                {{ data?.niche?.avenue_location }}
+              </span>
+            </p>
+          </div>
         </div>
-        </p>
-        <p class="text-lg">
+        <div class="text-lg">
           <span class="font-medium flex items-center text-muted-color">
             <Icon name="lucide:user-x" class="mr-2 inline-block" />
             Información de ocupante:
           </span>
-        <div class="my-3">
-          <p class="">
-            <span class="font-semibold text-muted-color">DPI:</span>
-            <span class="ml-2 text-xl">{{ data?.occupant?.dpi }}</span>
-          </p>
-          <p class="">
-            <span class="font-semibold text-muted-color">Nombre:</span>
-            <span class="ml-2 text-xl">
-              {{ data?.occupant?.first_name }}
-              {{ data?.occupant?.last_name }}
-            </span>
-          </p>
-          <p class="">
-            <span class="font-semibold text-muted-color">Género:</span>
-            <span class="ml-2 text-xl">
-              {{ data?.occupant?.gender.name }}
-            </span>
-          </p>
-          <p class="">
-            <span class="font-semibold text-muted-color">Fecha de nacimiento:</span>
-            <span class="ml-2 text-xl">
-              {{ data?.occupant?.date_of_birth ?
-                dateFormatter.format(new Date(data?.occupant?.date_of_birth)) :
-                "-"
-              }}
-            </span>
-          </p>
-          <p class="">
-            <span class="font-semibold text-muted-color">Fecha de defunción:</span>
-            <span class="ml-2 text-xl">
-              {{ data?.occupant?.death_date ?
-                dateFormatter.format(new Date(data?.occupant?.death_date)) :
-                "-"
-              }}
-            </span>
-          </p>
-          <p class="">
-            <span class="font-semibold text-muted-color">Lugar de nacimiento:</span>
-            <span class="ml-2 text-xl">
-              {{ data?.occupant?.birth_location || "-" }}
-            </span>
-          </p>
-          <p class="">
-            <span class="font-semibold text-muted-color">Lugar de defunción:</span>
-            <span class="ml-2 text-xl">
-              {{ data?.occupant?.death_location || "-" }}
-            </span>
-          </p>
+          <div class="my-3">
+            <p class="">
+              <span class="font-semibold text-muted-color">DPI:</span>
+              <span class="ml-2 text-xl">{{ data?.occupant?.dpi }}</span>
+            </p>
+            <p class="">
+              <span class="font-semibold text-muted-color">Nombre:</span>
+              <span class="ml-2 text-xl">
+                {{ data?.occupant?.first_name }}
+                {{ data?.occupant?.last_name }}
+              </span>
+            </p>
+            <p class="">
+              <span class="font-semibold text-muted-color">Género:</span>
+              <span class="ml-2 text-xl">
+                {{ data?.occupant?.gender.name }}
+              </span>
+            </p>
+            <p class="">
+              <span class="font-semibold text-muted-color">Fecha de nacimiento:</span>
+              <span class="ml-2 text-xl">
+                {{ data?.occupant?.date_of_birth ?
+                  dateFormatter.format(new Date(data?.occupant?.date_of_birth)) :
+                  "-"
+                }}
+              </span>
+            </p>
+            <p class="">
+              <span class="font-semibold text-muted-color">Fecha de defunción:</span>
+              <span class="ml-2 text-xl">
+                {{ data?.occupant?.death_date ?
+                  dateFormatter.format(new Date(data?.occupant?.death_date)) :
+                  "-"
+                }}
+              </span>
+            </p>
+            <p class="">
+              <span class="font-semibold text-muted-color">Lugar de nacimiento:</span>
+              <span class="ml-2 text-xl">
+                {{ data?.occupant?.birth_location || "-" }}
+              </span>
+            </p>
+            <p class="">
+              <span class="font-semibold text-muted-color">Lugar de defunción:</span>
+              <span class="ml-2 text-xl">
+                {{ data?.occupant?.death_location || "-" }}
+              </span>
+            </p>
 
+          </div>
         </div>
-        </p>
-        <p class="text-lg">
+        <div class="text-lg">
           <span class="font-medium flex items-center text-muted-color">
             <Icon name="lucide:user-check" class="mr-2 inline-block" />
 
             Información de responsable:
           </span>
-        <div class="my-3">
-          <p class="">
-            <span class="font-semibold text-muted-color">DPI:</span>
-            <span class="ml-2 text-xl">{{ data?.representative?.dpi }}</span>
-          </p>
-          <p class="">
-            <span class="font-semibold text-muted-color">Nombre:</span>
-            <span class="ml-2 text-xl">
-              {{ data?.representative?.first_name }}
-              {{ data?.representative?.last_name }}
-            </span>
-          </p>
-          <p class="">
-            <span class="font-semibold text-muted-color">Teléfono:</span>
-            <span class="ml-2 text-xl">{{ data?.representative?.phone || "-" }}</span>
-          </p>
-          <p class="">
-            <span class="font-semibold text-muted-color">Dirección:</span>
-            <span class="ml-2 text-xl">
-              {{ data?.representative?.address || "-" }}
-            </span>
-          </p>
-          <p class="">
-            <span class="font-semibold text-muted-color">Email:</span>
-            <span class="ml-2 text-xl">{{ data?.representative?.email }}</span>
-          </p>
+          <div class="my-3">
+            <p class="">
+              <span class="font-semibold text-muted-color">DPI:</span>
+              <span class="ml-2 text-xl">{{ data?.representative?.dpi }}</span>
+            </p>
+            <p class="">
+              <span class="font-semibold text-muted-color">Nombre:</span>
+              <span class="ml-2 text-xl">
+                {{ data?.representative?.first_name }}
+                {{ data?.representative?.last_name }}
+              </span>
+            </p>
+            <p class="">
+              <span class="font-semibold text-muted-color">Teléfono:</span>
+              <span class="ml-2 text-xl">{{ data?.representative?.phone || "-" }}</span>
+            </p>
+            <p class="">
+              <span class="font-semibold text-muted-color">Dirección:</span>
+              <span class="ml-2 text-xl">
+                {{ data?.representative?.address || "-" }}
+              </span>
+            </p>
+            <p class="">
+              <span class="font-semibold text-muted-color">Email:</span>
+              <span class="ml-2 text-xl">{{ data?.representative?.email }}</span>
+            </p>
 
+          </div>
         </div>
-        </p>
 
 
       </div>
@@ -130,55 +130,55 @@
       </h4>
 
       <div class="grid grid-cols-3 gap-4">
-        <p class="text-lg">
+        <div class="text-lg">
           <span class="font-medium flex items-center text-muted-color">
             <Icon name="lucide:calendar" class="mr-2 inline-block" />
             Fecha de inicio:
           </span>
-        <div class="my-3">
-          <p class="">
-            <span class=" text-xl">
-              {{ data?.start_date ?
-                dateFormatter.format(new Date(data?.start_date)) :
-                "-"
-              }}
-            </span>
-          </p>
+          <div class="my-3">
+            <p class="">
+              <span class=" text-xl">
+                {{ data?.start_date ?
+                  dateFormatter.format(new Date(data?.start_date)) :
+                  "-"
+                }}
+              </span>
+            </p>
+          </div>
         </div>
-        </p>
-        <p class="text-lg">
+        <div class="text-lg">
           <span class="font-medium flex items-center text-muted-color">
             <Icon name="lucide:calendar" class="mr-2 inline-block" />
             Fecha de vencimiento:
           </span>
-        <div class="my-3">
-          <p class="">
-            <span class=" text-xl">
-              {{ data?.end_date ?
-                dateFormatter.format(new Date(data?.end_date)) :
-                "-"
-              }}
-            </span>
-          </p>
+          <div class="my-3">
+            <p class="">
+              <span class=" text-xl">
+                {{ data?.end_date ?
+                  dateFormatter.format(new Date(data?.end_date)) :
+                  "-"
+                }}
+              </span>
+            </p>
+          </div>
         </div>
-        </p>
-        <p class="text-lg">
+        <div class="text-lg">
           <span class="font-medium flex items-center text-muted-color">
             <Icon name="lucide:check-circle" class="mr-2 inline-block" />
             Estado:
           </span>
-        <div class="my-3">
-          <p class="">
-            <span class="font-semibold text-muted-color">Estado:</span>
-            <span class="ml-2 text-xl">
-              {{ data?.state.name }}
-            </span>
-            <span class="ml-2 text-lg block">
-              {{ data?.state.description }}
-            </span>
-          </p>
+          <div class="my-3">
+            <p class="">
+              <span class="font-semibold text-muted-color">Estado:</span>
+              <span class="ml-2 text-xl">
+                {{ data?.state.name }}
+              </span>
+              <span class="ml-2 text-lg block">
+                {{ data?.state.description }}
+              </span>
+            </p>
+          </div>
         </div>
-        </p>
       </div>
 
       <h4 class="text-xl my-2 font-semibold text-muted-color-emphasis">
@@ -252,19 +252,21 @@
               <p>{{ payment.amount ? `$${payment.amount}` : "-" }}</p>
               <p class="font-semibold text-muted-color">Pagada:</p>
               <p>{{ payment.paid ? "Sí" : "No" }}</p>
+              <Button variant="text" size="small" severity="warn" icon="pi pi-eye" label="Ver detalles" :as="NuxtLink"
+                :to="`/admin/payments/${payment.id}`" />
             </template>
           </Card>
         </div>
         <p v-else>No hay otras boletas</p>
       </div>
 
-    </template>
-    <template v-else-if="status === 'pending'">
+    </div>
+    <div v-else-if="status === 'pending'">
       <p class="text-lg">Cargando...</p>
-    </template>
-    <template v-else-if="status === 'error'">
+    </div>
+    <div v-else-if="status === 'error'">
       <p class="text-lg">No se ha encontrado este contrato</p>
-    </template>
+    </div>
   </div>
 </template>
 <script setup>
@@ -288,12 +290,12 @@ const dateFormatter = new Intl.DateTimeFormat("es-GT", {
 const { mutate: handleCreatePayment, asyncStatus: paymentLoading } = useMutation({
   mutation: () => createPayment(route.params.id),
   onSuccess: () => {
-    refresh();
     toast.add({
       severity: "success",
       summary: "Éxito",
       detail: "Pago creado correctamente",
     });
+    refresh();
   },
   onError: (error) => {
     toast.add({
