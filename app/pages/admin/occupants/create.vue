@@ -292,7 +292,6 @@
         Se creará automáticamente un contrato inicial para este ocupante.
         Generar bóleta de pago en sección de contratos y pagos.
       </Message>
-{{ associatedUser }}
       <Button class="mt-4" type="submit" :loading="asyncStatus === 'loading'">
         <Icon name="lucide:save" />
         Guardar usuario

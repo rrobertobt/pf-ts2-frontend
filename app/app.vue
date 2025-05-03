@@ -24,3 +24,10 @@ useHead({
     title: "Administración Cementerio - Proyecto TS2",
   });
 </script>
+<style>
+@import '~/assets/css/main.css';
+
+body, html {
+  @apply bg-gray-100 dark:bg-zinc-950;
+}
+</style>

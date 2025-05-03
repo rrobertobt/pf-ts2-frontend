@@ -12,6 +12,7 @@
 
 @theme {
   --font-sans: 'Geist', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
 
   --animate-scaleIn: scaleIn 150ms ease;
   --animate-scaleOut: scaleOut 150ms ease;

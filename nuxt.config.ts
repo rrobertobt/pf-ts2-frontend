@@ -67,7 +67,7 @@ export default defineNuxtConfig({
       { name: "Geist", provider: "google" },
       // { name: 'Mona Sans', provider: 'google' },
       // { name: 'Hubot Sans', provider: 'google' },
-      // { name: 'Geist Mono', provider: 'google' },
+      { name: 'Geist Mono', provider: 'google' },
       // { name: 'Bricolage Grotesque', provider: 'google' }
     ],
     experimental: {
