@@ -83,33 +83,18 @@
     {
       label: "Navegación",
       items: [
-        { label: "Inicio", icon: "lucide:house", to: "/admin" },
-        { label: "Perfil", icon: "lucide:user", to: "/admin/profile" },
+        { label: "Inicio", icon: "lucide:house", to: "/regular" },
+        { label: "Perfil", icon: "lucide:user", to: "/regular/profile" },
         
       ],
     },
     {
-      label: "Administración",
+      label: "Consultas",
       items: [
         {
-          label: "Usuarios",
+          label: "Datos",
           icon: "lucide:users",
-          to: "/admin/users",
-        },
-        {
-          label: "Nichos",
-          icon: "tabler:grave",
-          to: "/admin/niches",
-        },
-        {
-          label: "Ocupantes",
-          icon: "lucide:user-x",
-          to: "/admin/occupants",
-        },
-        {
-          label: "Contratos y pagos",
-          icon: "lucide:user-x",
-          to: "/admin/contracts-payments",
+          to: "/regular/data",
         },
       ],
     },
