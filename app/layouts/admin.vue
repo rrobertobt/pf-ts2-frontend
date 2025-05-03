@@ -102,6 +102,11 @@
           icon: "tabler:grave",
           to: "/admin/niches",
         },
+        {
+          label: "Ocupantes",
+          icon: "lucide:user-x",
+          to: "/admin/occupants",
+        },
       ],
     },
   ];

@@ -19,6 +19,7 @@
     </Button>
     <Form
       class=""
+      
       v-slot="$form"
       :initialValues
       :resolver
@@ -124,7 +125,7 @@
         </div>
       </div>
 
-      <Button class="mt-4" type="submit">
+      <Button class="mt-4" type="submit" :loading="asyncStatus === 'loading'">
         <Icon name="lucide:save" />
         Guardar usuario
       </Button>
